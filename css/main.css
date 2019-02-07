@@ -34,6 +34,7 @@
 @import url("fonts.css");
 @import url("font-awesome/css/font-awesome.min.css");
 @import url("simple-line-icons/simple-line-icons.css");
+@import url("customization.css");
 
 /* 
 /* b. Document Setup
@@ -825,17 +826,17 @@ header .logo a {
 	text-shadow: none;
 	color: transparent;
 	width: 126px;
-	height: 12px;
+	height: 30px;
 	background-repeat: no-repeat;
 	background-position: 0 0;
-	background-image: url("../images/logo.png");
+	background-image: url("../images/signature.png");
 }
 @media (-webkit-min-device-pixel-ratio:2), (min-resolution:192dpi) {
 	header .logo a {
-		background-image: url("../images/logo-@2x.png");
-		-webkit-background-size: 126px 12px;
-		-moz-background-size: 126px 12px;
-		background-size: 126px 12px;
+		background-image: url("../images/signature.png");
+		-webkit-background-size: 126px 30px;
+		-moz-background-size: 126px 30px;
+		background-size: 126px 30px;
 	}
 }
 .opaque {
