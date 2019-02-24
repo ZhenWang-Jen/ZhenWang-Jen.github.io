@@ -1,0 +1,43 @@
+/**
+ * CSS for the Scribble Web App
+ * Copyright 2019, Zhen Wang
+ */
+
+#drawingCanvas {
+	border: 		1px solid #c3c3c3;
+	margin-right: 	auto;
+	margin-left: 	auto;
+	display: 		block;
+	background-color: white;  		/* for solution only */
+}
+
+#title {
+	text-align: 	center;
+}
+
+#debugDiv {
+	color: 			#aaaaaa;
+	width: 			500px;
+	margin-right: 	auto;
+	margin-left: 	auto;
+	text-align: 	center;
+}
+
+.buttonDiv {
+	width: 			500px;
+	display: 		flex;
+	margin-right: 	auto;
+	margin-left: 	auto;
+	padding-bottom: 10px;		
+}
+
+.buttonDiv button, select {
+	width: 			95px;
+	font-size: 		20px;
+	vertical-align: middle;	
+	margin: 0 3px 6px 0;
+}
+
+#black 	{ background-color: #000000; }
+#maroon { background-color: #8C1D40; }
+#gold 	{ background-color: #FFC627; }

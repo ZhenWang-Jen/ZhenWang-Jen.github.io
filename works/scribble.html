@@ -18,27 +18,27 @@
 
 	<!-- CSS
     ================================================== -->
-   <link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/main.css">
-   <link rel="stylesheet" href="css/media-queries.css">         
-   <link rel="stylesheet" href="css/investment-calculator.css">         
+   <link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/main.css">
+   <link rel="stylesheet" href="../css/media-queries.css">         
+   <link rel="stylesheet" href="../css/scribble.css">         
 
    <!-- Script
    =================================================== -->
-	<script src="js/modernizr.js"></script>
+	<script src="../js/modernizr.js"></script>
 
    <!-- Favicons
 	=================================================== -->
-	<link rel="shortcut icon" href="favicon.png" >
+	<link rel="shortcut icon" href="../favicon.png" >
 
 </head>
 
-<body onload="initialize()">
+<body onload="init()">
 
    <div id="top"></div>
    <div id="preloader"> 
 	   <div id="status">
-         <img src="images/loader.gif" height="60" width="60" alt="">
+         <img src="../images/loader.gif" height="60" width="60" alt="">
          <div class="loader">Loading...</div>
       </div>
    </div>
@@ -65,12 +65,12 @@
          	</a>         
 
 	         <ul id="nav" class="nav">
-	            <li><a href="index.html#hero">Home.</a></li>
-		         <li class="current"><a href="index.html#portfolio">Works.</a></li>
-	            <li><a href="index.html#services">Services.</a></li>
-	            <li><a href="index.html#about">About.</a></li>
-	            <li><a href="index.html#journal">Blog.</a></li>	        
-	            <li><a href="index.html#contact">Contact.</a></li>
+	            <li><a href="../index.html#hero">Home.</a></li>
+		         <li class="current"><a href="../index.html#portfolio">Works.</a></li>
+	            <li><a href="../index.html#services">Services.</a></li>
+	            <li><a href="../index.html#about">About.</a></li>
+	            <li><a href="../index.html#journal">Blog.</a></li>	        
+	            <li><a href="../index.html#contact">Contact.</a></li>
 	         </ul> 
 
 	      </nav> <!-- /nav-wrap -->	      
@@ -106,136 +106,77 @@
 
 	   	<div class="entry tab-whole nine columns centered">
 
-	         <header class="entry-header">
+	        <header class="entry-header">
+				<h1 class="entry-title">
+					Scribble Tool
+				</h1> 				 
+					
+				<div class="entry-meta">
+					<ul>
+						<li>July 12, 2017</li>
+						<span class="meta-sep">•</span>								
+						<li>
+							<a rel="skills tag" title="" href="#">Web design</a>, 
+							<!-- <a rel="skills tag" title="" href="#">Finance</a> -->
+						</li>
+						<span class="meta-sep">•</span>
+						<li><a rel="client" title="" href="#">Arts</a></li>
+					</ul>
+				</div>	 
+			</header>
 
-					<h1 class="entry-title">
-						Investment Calculator
-					</h1> 				 
-						
-					<div class="entry-meta">
-						<ul>
-							<li>July 12, 2017</li>
-							<span class="meta-sep">•</span>								
-							<li>
-								<a rel="skills tag" title="" href="#">Web design</a>, 
-								<!-- <a rel="skills tag" title="" href="#">Finance</a> -->
-							</li>
-							<span class="meta-sep">•</span>
-							<li><a rel="client" title="" href="#">Finance</a></li>
-						</ul>
-					</div> 
-						 
-				</header>
+			<div class="entry-content">
+				<p class="lead">
+					Do you want to create some creative drawings? Checkout my scribble app below!
+				</p>
+				<p>
+					Esay-to-use app for doodling using ASU colors -- black, maroon and gold. Good on desktops, mobile devices and more. Go devils! 
+				</p>
+			</div>
+			<div class="entry-content-media">
+	<!-- our buttons and drop-down box (select) -->
+	<div class="buttonDiv">
+			<button type="button" id="black"  onclick="setColor('black' )"></button>
+			<button type="button" id="maroon" onclick="setColor('maroon')"></button>
+			<button type="button" id="gold"   onclick="setColor('gold'  )"></button> 
+			<button type="button" id="clear"  onclick="clearCanvas()">Clear</button> 
+			<select name="lineWidth" onchange="setLineWidth(value)">
+				<option value= "1"> 1</option>
+				<option value= "3"> 3</option>
+				<option value= "5"> 5</option>
+				<option value="10">10</option>
+				<option value="15">15</option>
+				<option value="20">20</option>
+				<option value="25">25</option>
+			</select>
+		</div>
+	
+		<!-- The drawing canvas and event handlers. Note we hard code the size -->
+		<div id="canvasDiv">
+			<canvas id="drawingCanvas" width="500" height="500"
+				 onmousemove  =	"mouseMoved(event)" 
+				 onmouseout   =	"mouseLeftCanvas(event)"
+				 onmouseenter =	"mouseEnteredCanvas(event)"
+				 onmousedown  =	"startDrawing(event)"
+				 onmouseup 	  =	"stopDrawing(event)">
+				 Your browser does not support the Canvas tag
+			</canvas>
+		</div>
+		 
+		 <!-- Placeholders for debugging info via javascript writing to the DOM -->
+		 <div id="debugDiv">
+			 <div id="XYCoords">     </div>
+			<div id="mouseInOut">   </div>
+			<div id="mouseUpDown">  </div>
+			<div id="drawColor">    </div>
+			<div id="lineWidth">	</div>
+		</div>
 
-				<div class="entry-content">
-					<p class="lead">
-						Are you on track to embrace your financial freedom? Find out using my investment calculator below.
-					</p>
-
-					<p>
-						Calculate your life-long financial achievements and estimated retirement savings with my investment calculator.
-						 This is for educational and informational purposes only.  It should not be considered legal or financial advice.  
-						 You should consult with an attorney or other professional to determine what may be best for your individual needs. 
-					</p>
-				</div>
-
-				<div class="entry-content-media">
-						<form id="inputForm"> 
-								<!--difference between id and name?????--> 
-								<!--In short, the name is the identifier that is sent to the server when you submit the form. The id is a unique identifier for the browser, clientside, for javascript and such. -->
-									<table id="inputTable" class="center">
-										<tr>
-											<td>
-												<input 	id="startingAgeInput" type="number" 
-														value="25" min="1" max="99" step="1"
-														placeholder="Strarting Age" required>
-											</td>
-											<td>
-												<input 	id="retirementAgeInput" type="number" 
-														value="65" min="1" max="99" step="1"
-														placeholder="Retirement Age" required>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<input 	id="startingSalaryInput" type="number" 
-														value="50000" min="0" max="999999" step="any"
-														placeholder="Starting Salary" required>
-											</td>
-											<td>
-												<input 	id="annualSavingPercentInput" type="number" 
-														value="10" min="0" max="100" step="0.01"
-														placeholder="Annual Savings %" required>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<input 	id="annualRaisePercentInput" type="number" 
-														value="2" min="0" max="100" step="0.01"
-														placeholder="Annual Raise %" required>
-											</td>
-											<td>
-												<input 	id="annualInterestPercentInput" type="number" 
-														value="7" min="0" max="100" step="0.01"
-														placeholder="Annual Interest Rate %" required>
-											</td>
-										</tr>
-									</table>
-							
-									<div id="buttonDivId" class="center">
-										<button id="clearButton" type="button" onClick="clearInputs(this.form)">
-											Clear
-										</button>
-										
-										<button id="defaultButton" type="button" onClick="loadDefaults(this.form)"> 
-											Default
-										</button>
-										
-										<button id="makeMeRichButton" type="button" onClick="runMakeMeRich(this.form)">
-											Make Me Rich!
-										</button>
-									</div>
-									<!--when type="button" is necessary?????-->		
-								</form>
-							
-								<hr>
-							<div id="summary" class="center">
-								<table id="summaryTable" class="resultsTable">	
-									<tr>
-										<td id="yearsToInvest"></td>
-										<td class="summaryTableHeader">  :    Years to invest</td>
-									</tr>
-									<tr>
-										<td id="totalEndingBalance"></td>
-										<td class="summaryTableHeader">  :    Retirement Fund</td>
-									</tr>
-									<tr>
-										<td id="totalEarnedSalary"></td>
-										<td class="summaryTableHeader">  :    Lifetime Salary</td>
-									</tr>
-									<tr>
-										<td id="totalSavings"></td>
-										<td class="summaryTableHeader"> :    Total saved</td>
-									</tr>
-									<tr>
-										<td id="totalEarnedInterest"></td>
-										<td class="summaryTableHeader">  :     Earned Interest</td>
-									</tr>
-									
-								</table>
-							</div>
-							
-							<div id="details" class="center">
-									<table id="detailedTable" class="resultsTable">
-										<tr><th>Age</th><th>Salary</th><th>Savings</th><th>Interest</th><th>Retirement</th></tr>
-									</table>	
-							</div>
-				</div> 					 
-
-				<div class="pagenav group">
-		  			  <span class="prev"><a href="#" rel="prev">Previous</a></span>
-		  			<span class="next"><a href="#" rel="next">Next</a></span>  				   
-	  			</div>  										   
+			</div> 					 
+			<div class="pagenav group">
+		  		  <span class="prev"><a href="#" rel="prev">Previous</a></span>
+		  		<span class="next"><a href="#" rel="next">Next</a></span>  				   
+	  		</div>  										   
 	         
 	      </div> <!-- /entry -->	      
 
@@ -254,7 +195,7 @@
 	               <div class="item-wrap">
 
 	                  <a href="portfolio.html">
-                        <img src="images/portfolio/beetle.jpg" alt="Beetle">                      
+                        <img src="../images/works/beetle.jpg" alt="Beetle">                      
                         <div class="overlay">
                         	<div class="portfolio-item-meta">
           					      <h5>Beetle</h5>
@@ -270,7 +211,7 @@
 	               <div class="item-wrap">
 
 	                  <a href="portfolio.html">
-                        <img src="images/portfolio/banjo-player.jpg" alt="Banjo Player">
+                        <img src="../images/works/banjo-player.jpg" alt="Banjo Player">
                         <div class="overlay">
                         	<div class="portfolio-item-meta">
           					      <h5>Banjo Player</h5>
@@ -286,7 +227,7 @@
 	               <div class="item-wrap">
 
 	                 <a href="portfolio.html">                        
-                        <img src="images/portfolio/judah.jpg" alt="Judah">                       
+                        <img src="../images/works/judah.jpg" alt="Judah">                       
                         <div class="overlay">
                         	<div class="portfolio-item-meta">
           					      <h5>Judah</h5>
@@ -302,7 +243,7 @@
 	               <div class="item-wrap">
 
 	                  <a href="portfolio.html">
-                        <img src="images/portfolio/grizzly.jpg" alt="Grizzly">
+                        <img src="../images/works/grizzly.jpg" alt="Grizzly">
                         <div class="overlay"></div>                       
                         <div class="portfolio-item-meta">
           					      <h5>Grizzly</h5>
@@ -401,16 +342,16 @@
 	<!-- approaches that ensures we don't start using the DOM too early     -->
 	<!-- ================================================================== -->
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>   
-   <script src="js/jquery.flexslider.js"></script>
-   <script src="js/jquery.fittext.js"></script>
-   <script src="js/backstretch.js"></script> 
-   <script src="js/waypoints.js"></script>  
-	<script src="js/main.js"></script>
+   <script>window.jQuery || document.write('<script src="../js/jquery-1.10.2.min.js"><\/script>')</script>
+   <script type="text/javascript" src="../js/jquery-migrate-1.2.1.min.js"></script>   
+   <script src="../js/jquery.flexslider.js"></script>
+   <script src="../js/jquery.fittext.js"></script>
+   <script src="../js/backstretch.js"></script> 
+   <script src="../js/waypoints.js"></script>  
+	<script src="../js/main.js"></script>
 	
-	<script type="text/javascript" src="./js/FormattingToolsLibrary.js"></script>
-	<script type="text/javascript" src="./js/investment-calculator.js"></script>
+	<script type="text/javascript" src="../js/FormattingToolsLibrary.js"></script>
+	<script type="text/javascript" src="../js/scribble.js"></script>
 </body>
 
 </html>
