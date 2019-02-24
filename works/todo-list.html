@@ -21,7 +21,6 @@
    <link rel="stylesheet" href="../css/base.css">
 	<link rel="stylesheet" href="../css/main.css">
    <link rel="stylesheet" href="../css/media-queries.css">         
-   <link rel="stylesheet" href="../css/scribble.css">         
 
    <!-- Script
    =================================================== -->
@@ -134,44 +133,13 @@
 				</p>
 			</div>
 			<div class="entry-content-media">
-	<!-- our buttons and drop-down box (select) -->
-	<div class="buttonDiv">
-			<button type="button" id="black"  onclick="setColor('black' )"></button>
-			<button type="button" id="maroon" onclick="setColor('maroon')"></button>
-			<button type="button" id="gold"   onclick="setColor('gold'  )"></button> 
-			<button type="button" id="clear"  onclick="clearCanvas()">Clear</button> 
-			<select name="lineWidth" onchange="setLineWidth(value)">
-				<option value= "1"> 1</option>
-				<option value= "3"> 3</option>
-				<option value= "5"> 5</option>
-				<option value="10">10</option>
-				<option value="15">15</option>
-				<option value="20">20</option>
-				<option value="25">25</option>
-			</select>
-		</div>
-	
-		<!-- The drawing canvas and event handlers. Note we hard code the size -->
-		<div id="canvasDiv">
-			<canvas id="drawingCanvas" width="500" height="500"
-				 onmousemove  =	"mouseMoved(event)" 
-				 onmouseout   =	"mouseLeftCanvas(event)"
-				 onmouseenter =	"mouseEnteredCanvas(event)"
-				 onmousedown  =	"startDrawing(event)"
-				 onmouseup 	  =	"stopDrawing(event)">
-				 Your browser does not support the Canvas tag
-			</canvas>
-		</div>
-		 
-		 <!-- Placeholders for debugging info via javascript writing to the DOM -->
-		 <div id="debugDiv">
-			 <div id="XYCoords">     </div>
-			<div id="mouseInOut">   </div>
-			<div id="mouseUpDown">  </div>
-			<div id="drawColor">    </div>
-			<div id="lineWidth">	</div>
-		</div>
+					<button onclick="appendListItem('appendToMe')">
+							Click me to add a <code>&lt;li&gt;</code> to the list
+						</button>
+					
+						<ul id="appendToMe">
 
+						</ul>
 			</div> 					 
 			<div class="pagenav group">
 		  		  <span class="prev"><a href="#" rel="prev">Previous</a></span>
@@ -348,9 +316,9 @@
    <script src="../js/jquery.fittext.js"></script>
    <script src="../js/backstretch.js"></script> 
    <script src="../js/waypoints.js"></script>  
-   <script src="../js/main.js"></script>
+	<script src="../js/main.js"></script>
 	
-   <script type="text/javascript" src="../js/scribble.js"></script>
+	<script type="text/javascript" src="../js/DOM-Append.js"></script>
 </body>
 
 </html>
