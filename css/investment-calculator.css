@@ -1,0 +1,74 @@
+hr {
+    width:              85%;
+    color:              saddlebrown; /* internet explorer */
+    background-color:   saddlebrown; /* firefox and Opera */
+    border-color:       saddlebrown; /* chrome and Safari */
+}
+
+.center {
+    margin:             auto;
+    display:            table;
+}
+
+input[type=number] {
+    text-align:         right;
+    font-size:          1.0em;
+    width:              13em;
+}
+#inputTable th {
+    color:              saddlebrown;
+    font-size:          0.85em;
+}
+
+input:invalid           { border: 2px solid #A00000; }
+input:valid             { border: 2px solid #00A000; }
+input:focus:invalid     { color: red; }
+input:focus:valid       { color: black; }
+
+
+button {
+    font-size:          20px;
+    background-color:   #f26522;
+    margin:             12px;
+    width:              200px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+button:hover {
+	background: #faec09;
+	color: #252525;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.resultsTable {
+    font-weight:        bold;
+    text-align:         right;
+    border-collapse:    collapse;
+    visibility: hidden;
+}
+
+.resultsTable td, .resultsTable th {
+    border:             1px solid black;
+    padding-left:       12px;
+    padding-right:      12px;
+}
+
+#summaryTable {
+    color:              maroon;
+    background-color:   #f26522;
+    float:              left;
+    visibility: hidden;
+}
+
+.summaryTableHeader {
+    text-align: left;
+}
+
+#detailedTable {
+    color:              #12151b;
+    visibility: hidden;
+}
