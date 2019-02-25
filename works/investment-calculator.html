@@ -18,9 +18,10 @@
 
 	<!-- CSS
     ================================================== -->
-   <link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/main.css">
-   <link rel="stylesheet" href="css/media-queries.css">         
+   <link rel="stylesheet" href="../css/base.css">
+	<link rel="stylesheet" href="../css/main.css">
+   <link rel="stylesheet" href="../css/media-queries.css">         
+   <link rel="stylesheet" href="../css/investment-calculator.css">         
 
    <!-- Script
    =================================================== -->
@@ -32,12 +33,12 @@
 
 </head>
 
-<body>
+<body onload="initialize()">
 
    <div id="top"></div>
    <div id="preloader"> 
 	   <div id="status">
-         <img src="images/loader.gif" height="60" width="60" alt="">
+         <img src="../images/loader.gif" height="60" width="60" alt="">
          <div class="loader">Loading...</div>
       </div>
    </div>
@@ -88,7 +89,7 @@
 			<div class="twelve columns">
 
 				<h1>Portfolio<span>.</span></h1>
-				<p>Aenean condimentum lacus sit amet luctus lobortis.</p>
+				<p>Web apps make life great again.</p>
 
 			</div>			    
 
@@ -108,35 +109,127 @@
 	         <header class="entry-header">
 
 					<h1 class="entry-title">
-							Coffee Cup
+						Investment Calculator
 					</h1> 				 
 						
 					<div class="entry-meta">
 						<ul>
-							<li>July 12, 2014</li>
+							<li>July 12, 2017</li>
 							<span class="meta-sep">•</span>								
 							<li>
-								<a rel="skills tag" title="" href="#">Branding</a>, 
-								<a rel="skills tag" title="" href="#">Photography</a>
+								<a rel="skills tag" title="" href="#">Web design</a>, 
+								<!-- <a rel="skills tag" title="" href="#">Finance</a> -->
 							</li>
 							<span class="meta-sep">•</span>
-							<li><a rel="client" title="" href="#">styleshout</a></li>
+							<li><a rel="client" title="" href="#">Finance</a></li>
 						</ul>
 					</div> 
 						 
 				</header>
 
 				<div class="entry-content">
-					<p class="lead">Lorem ipsum Nisi enim est proident est magna occaecat dolore proident eu ex sunt consectetur consectetur dolore enim nisi exercitation adipisicing magna culpa commodo deserunt ut do Ut occaecat.</p>
+					<p class="lead">
+						Are you on track to embrace your financial freedom? Find out using my investment calculator below.
+					</p>
 
-					<p>Lorem ipsum Nisi enim est proident est magna occaecat dolore proident eu ex sunt consectetur consectetur dolore enim nisi exercitation adipisicing magna culpa commodo deserunt ut do Ut occaecat. Lorem ipsum Veniam consequat quis aliquip dolore minim ex labore dolor Excepteur Duis velit in officia Excepteur officia officia officia cillum ut elit in fugiat incididunt ea ad Ut ut ea ea dolor ex dolor eu magna voluptate irure consectetur.</p>
+					<p>
+						Calculate your life-long financial achievements and estimated retirement savings with my investment calculator.
+						 This is for educational and informational purposes only.  It should not be considered legal or financial advice.  
+						 You should consult with an attorney or other professional to determine what may be best for your individual needs. 
+					</p>
 				</div>
 
 				<div class="entry-content-media">
-					<div class="post-thumb">
-						<img src="images/portfolio/b-coffee-02.jpg">
-						<img src="images/portfolio/b-coffee-01.jpg">
-					</div> 
+						<form id="inputForm"> 
+								<!--difference between id and name?????--> 
+								<!--In short, the name is the identifier that is sent to the server when you submit the form. The id is a unique identifier for the browser, clientside, for javascript and such. -->
+									<table id="inputTable" class="center">
+										<tr>
+											<td>
+												<input 	id="startingAgeInput" type="number" 
+														value="25" min="1" max="99" step="1"
+														placeholder="Strarting Age" required>
+											</td>
+											<td>
+												<input 	id="retirementAgeInput" type="number" 
+														value="65" min="1" max="99" step="1"
+														placeholder="Retirement Age" required>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input 	id="startingSalaryInput" type="number" 
+														value="50000" min="0" max="999999" step="any"
+														placeholder="Starting Salary" required>
+											</td>
+											<td>
+												<input 	id="annualSavingPercentInput" type="number" 
+														value="10" min="0" max="100" step="0.01"
+														placeholder="Annual Savings %" required>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input 	id="annualRaisePercentInput" type="number" 
+														value="2" min="0" max="100" step="0.01"
+														placeholder="Annual Raise %" required>
+											</td>
+											<td>
+												<input 	id="annualInterestPercentInput" type="number" 
+														value="7" min="0" max="100" step="0.01"
+														placeholder="Annual Interest Rate %" required>
+											</td>
+										</tr>
+									</table>
+							
+									<div id="buttonDivId" class="center">
+										<button id="clearButton" type="button" onClick="clearInputs(this.form)">
+											Clear
+										</button>
+										
+										<button id="defaultButton" type="button" onClick="loadDefaults(this.form)"> 
+											Default
+										</button>
+										
+										<button id="makeMeRichButton" type="button" onClick="runMakeMeRich(this.form)">
+											Make Me Rich!
+										</button>
+									</div>
+									<!--when type="button" is necessary?????-->		
+								</form>
+							
+								<hr>
+							<div id="summary" class="center">
+								<table id="summaryTable" class="resultsTable">	
+									<tr>
+										<td id="yearsToInvest"></td>
+										<td class="summaryTableHeader">  :    Years to invest</td>
+									</tr>
+									<tr>
+										<td id="totalEndingBalance"></td>
+										<td class="summaryTableHeader">  :    Retirement Fund</td>
+									</tr>
+									<tr>
+										<td id="totalEarnedSalary"></td>
+										<td class="summaryTableHeader">  :    Lifetime Salary</td>
+									</tr>
+									<tr>
+										<td id="totalSavings"></td>
+										<td class="summaryTableHeader"> :    Total saved</td>
+									</tr>
+									<tr>
+										<td id="totalEarnedInterest"></td>
+										<td class="summaryTableHeader">  :     Earned Interest</td>
+									</tr>
+									
+								</table>
+							</div>
+							
+							<div id="details" class="center">
+									<table id="detailedTable" class="resultsTable">
+										<tr><th>Age</th><th>Salary</th><th>Savings</th><th>Interest</th><th>Retirement</th></tr>
+									</table>	
+							</div>
 				</div> 					 
 
 				<div class="pagenav group">
@@ -161,7 +254,7 @@
 	               <div class="item-wrap">
 
 	                  <a href="portfolio.html">
-                        <img src="images/portfolio/beetle.jpg" alt="Beetle">                      
+                        <img src="../images/works/beetle.jpg" alt="Beetle">                      
                         <div class="overlay">
                         	<div class="portfolio-item-meta">
           					      <h5>Beetle</h5>
@@ -177,7 +270,7 @@
 	               <div class="item-wrap">
 
 	                  <a href="portfolio.html">
-                        <img src="images/portfolio/banjo-player.jpg" alt="Banjo Player">
+                        <img src="../images/works/banjo-player.jpg" alt="Banjo Player">
                         <div class="overlay">
                         	<div class="portfolio-item-meta">
           					      <h5>Banjo Player</h5>
@@ -193,7 +286,7 @@
 	               <div class="item-wrap">
 
 	                 <a href="portfolio.html">                        
-                        <img src="images/portfolio/judah.jpg" alt="Judah">                       
+                        <img src="../images/works/judah.jpg" alt="Judah">                       
                         <div class="overlay">
                         	<div class="portfolio-item-meta">
           					      <h5>Judah</h5>
@@ -209,7 +302,7 @@
 	               <div class="item-wrap">
 
 	                  <a href="portfolio.html">
-                        <img src="images/portfolio/grizzly.jpg" alt="Grizzly">
+                        <img src="../images/works/grizzly.jpg" alt="Grizzly">
                         <div class="overlay"></div>                       
                         <div class="portfolio-item-meta">
           					      <h5>Grizzly</h5>
@@ -238,16 +331,16 @@
          <div class="six columns tab-whole footer-about">
 				
 				<h3>About Zhen Wang</h3>
-            
+              
 				<p>Zhen Wang is an honor graduate from Arizona State University with her bachelor's degree in Computer Information Systems. 
 					After graduation, Zhen works as an IT consultant, and a UI & UX professional for different clients across industries.
 				</p>
-
+	
 				<p>
 					Zhen is focused on creating product solutions for the Information Technology industry. 
 					Following lean & agile methdologies while leveraging the fundamentals of the design process, 
 					Zhen ensures the value to you is a more credible, user-centric, and functional product solution.
-				</p>    
+				</p>       
 
          </div> <!-- /footer-about -->
 
@@ -299,16 +392,25 @@
 
 
    <!-- Java Script
-   ================================================== -->
+	================================================== -->
+	<!-- ================================================================== -->
+	<!-- We place our calls to JavaScript at the bottom of the HTML         -->
+	<!-- that way, all of the HTML is loaded and the DOM is created before  -->
+	<!-- calling our scripts - see body onload="func()" for additional      -->
+	<!-- approaches that ensures we don't start using the DOM too early     -->
+	<!-- approaches that ensures we don't start using the DOM too early     -->
+	<!-- ================================================================== -->
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>   
-   <script src="js/jquery.flexslider.js"></script>
-   <script src="js/jquery.fittext.js"></script>
-   <script src="js/backstretch.js"></script> 
-   <script src="js/waypoints.js"></script>  
-   <script src="js/main.js"></script>
-
+   <script>window.jQuery || document.write('<script src="../js/jquery-1.10.2.min.js"><\/script>')</script>
+   <script type="text/javascript" src="../js/jquery-migrate-1.2.1.min.js"></script>   
+   <script src="../js/jquery.flexslider.js"></script>
+   <script src="../js/jquery.fittext.js"></script>
+   <script src="../js/backstretch.js"></script> 
+   <script src="../js/waypoints.js"></script>  
+	<script src="../js/main.js"></script>
+	
+	<script type="text/javascript" src="../js/FormattingToolsLibrary.js"></script>
+	<script type="text/javascript" src="../js/investment-calculator.js"></script>
 </body>
 
 </html>
