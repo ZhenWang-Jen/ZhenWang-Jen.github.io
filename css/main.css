@@ -1042,7 +1042,7 @@ footer {
 	font-size: 13px;
 	line-height: 24px;
 	position: relative;
-	color: #3C4142;	
+	color: #c0cdd1;	
 }
 footer a, footer a:visited {
 	color: #a43b0a;
@@ -1079,7 +1079,7 @@ footer ul li {
 	line-height: 24px;
 }
 footer ul li a, footer ul li a:visited {
-	color: #3C4142;
+	color: #c0cdd1;
 }
 footer .copyright {
 	margin: 0;
